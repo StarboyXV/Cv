@@ -14,9 +14,9 @@ A modern, component-based CV/resume website with the following features:
 - Fast development with Vite HMR
 
 ## Technology Stack
-- React 18
+- React 19
 - Vite for fast builds
-- CSS3 with responsive design
+- CSS3 with responsive design and shared design tokens
 - Component-based architecture
 
 ## Project Structure
@@ -28,7 +28,7 @@ src/
 │   ├── Skills.jsx & Skills.css
 │   ├── Education.jsx & Education.css
 │   ├── Contact.jsx & Contact.css
-├── App.jsx & App.css
+├── App.jsx
 ├── main.jsx
 └── index.css
 ```
@@ -84,18 +84,20 @@ Each section can be customized by editing the corresponding component:
    - Phone number
 
 ### Styling
-- Each component has its own CSS file for easy customization
-- Main color scheme: Purple gradient (#667eea to #764ba2)
-- Modify colors, fonts, and spacing in individual component CSS files
-- Global styles in `src/index.css` and `src/App.css`
+- CSS is split per component (one stylesheet alongside each component) but uses the global cascade — it is not scoped like CSS Modules
+- Main color scheme: blue-to-navy gradient (`#4c5fd5` to `#000269`), with `#3730a3` as the accent text colour on light backgrounds
+- Palette and shared values live as CSS custom properties in `:root` inside `src/index.css`; consume the tokens instead of hardcoding colours
+- Global styles, including the shared `.container` rule, are in `src/index.css`
+- Modify colors, fonts, and spacing in the relevant component CSS file or in the tokens in `src/index.css`
 
 ## Available Scripts
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
+- `npm run lint` - Run ESLint
 - `npm run preview` - Preview the production build
 
 ## Notes
 - The project uses Vite's React plugin with Oxc for fast transformation
-- All components are functional components with hooks
-- CSS is scoped to components via separate CSS files
-- The design is mobile-responsive
+- All components are functional components with hooks and named exports (`App` is the default export)
+- CSS files are split per component but share the global cascade; there is no CSS-in-JS or CSS Modules
+- The design is mobile-responsive and respects `prefers-reduced-motion`

@@ -1,4 +1,3 @@
-import './App.css'
 import { Header } from './components/Header'
 import { Experience } from './components/Experience'
 import { Skills } from './components/Skills'
@@ -8,12 +7,16 @@ import { Contact } from './components/Contact'
 function App() {
   return (
     <>
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <Header />
-      <Experience />
-      <Skills />
-      <Education />
-      <Contact />
-
+      <main id="main-content" tabIndex={-1}>
+        <Experience />
+        <Skills />
+        <Education />
+      </main>
+      <footer>
+        <Contact />
+      </footer>
     </>
   )
 }
