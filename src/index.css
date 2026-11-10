@@ -1,7 +1,31 @@
+:root {
+  color-scheme: light;
+  --color-primary: #4c5fd5;
+  --color-primary-dark: #000269;
+  --color-accent: #3730a3;
+  --color-accent-soft: #e8e8ff;
+  --color-accent-lilac: #f0e8ff;
+  --color-text: #333;
+  --color-text-muted: #555;
+  --color-text-soft: #666;
+  --color-text-subtle: #6b7280;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f9f9f9;
+  --color-border: #e0e0e0;
+  --radius-card: 8px;
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --space-section: 40px 20px;
+  --space-heading: 30px;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -10,7 +34,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #333;
+  color: var(--color-text);
   line-height: 1.6;
 }
 
@@ -32,4 +56,134 @@ button {
 
 code, pre {
   font-family: 'Courier New', Courier, monospace;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+
+section[id] {
+  scroll-margin-top: 1.5rem;
+}
+
+.section {
+  padding: var(--space-section);
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  margin-bottom: var(--space-heading);
+  color: var(--color-text);
+}
+
+.card {
+  background: var(--color-surface);
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.header :focus-visible,
+.contact :focus-visible {
+  outline-color: var(--color-surface);
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-surface);
+  color: var(--color-primary-dark);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Browsers omit background colours when printing, so the white-on-gradient
+   header and contact text would otherwise disappear on paper. */
+@media print {
+  body .header,
+  body .contact {
+    background: none;
+    color: var(--color-text);
+  }
+
+  body .header {
+    padding: 0 0 1.5rem;
+  }
+
+  .header .main-nav,
+  .header .menu-toggle,
+  .skip-link {
+    display: none;
+  }
+
+  .section {
+    padding: 0 0 1.5rem;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid var(--color-border);
+    break-inside: avoid;
+  }
+
+  .contact .section-title {
+    color: var(--color-text);
+  }
+
+  .contact .contact-link {
+    background: none;
+    color: var(--color-text);
+    border-color: var(--color-border);
+    text-decoration: underline;
+  }
 }

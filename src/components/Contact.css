@@ -1,17 +1,13 @@
 .contact {
-  padding: 40px 20px;
-  background: linear-gradient(135deg, #667eea 0%, #000269 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   color: white;
 }
 
 .contact .container {
-  max-width: 900px;
-  margin: 0 auto;
   text-align: center;
 }
 
 .contact h2 {
-  font-size: 2rem;
   margin-bottom: 20px;
   color: white;
 }
@@ -19,7 +15,6 @@
 .contact-content p {
   font-size: 1.1rem;
   margin-bottom: 30px;
-  opacity: 0.95;
   line-height: 1.6;
 }
 
@@ -32,18 +27,18 @@
 
 .contact-link {
   display: inline-block;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   color: white;
   padding: 12px 24px;
   border-radius: 6px;
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.3s ease;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.4);
 }
 
 .contact-link:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.7);
   transform: translateY(-2px);
 }
